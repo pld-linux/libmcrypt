@@ -61,7 +61,7 @@ Statyczna biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi.
 
 %build
 %configure
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
