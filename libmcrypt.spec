@@ -61,13 +61,13 @@ Statyczna biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi.
 rm -f missing
 libtoolize --copy --force
 aclocal
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 (cd libltdl
 rm -f missing
 libtoolize --copy --force
 aclocal
-autoconf
+%{__autoconf}
 automake -a -c)
 %configure \
 	--enable-static \
