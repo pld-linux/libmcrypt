@@ -1,7 +1,7 @@
 Summary:	encryption/decryption library
 Summary(pl):	biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi
 Name:		libmcrypt
-Version:	2.4.11
+Version:	2.4.15
 Release:	1
 License:	LGPL
 Vendor:		Nikos Mavroyanopoulos <nmav@hellug.gr>
@@ -10,7 +10,7 @@ Group(de):	Libraries
 Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
-Source0:	ftp://argeas.cs-net.gr/pub/unix/mcrypt/libmcrypt/%{name}-%{version}.tar.gz
+Source0:	ftp://mcrypt.hellug.gr/pub/mcrypt/libmcrypt/%{name}-%{version}.tar.gz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -64,7 +64,9 @@ Statyczna biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi.
 %setup -q
 
 %build
-%configure
+%configure \
+	--enable-static \
+	--disable-libltdl
 %{__make}
 
 %install
