@@ -12,7 +12,7 @@ License:	LGPL
 Vendor:		Nikos Mavroyanopoulos <nmav@hellug.gr>
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/mcrypt/%{name}-%{version}.tar.gz
-# Source0-md5: b1be163143f8e8ed0474beeb642b3bad
+# Source0-md5:	b1be163143f8e8ed0474beeb642b3bad
 Patch0:		%{name}-am18.patch
 URL:		http://mcrypt.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
