@@ -95,6 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libmcrypt/*.la
 %{_mandir}/man3/*
 %{_includedir}/*.h
+%{_aclocaldir}/*
 
 %files static
 %defattr(644,root,root,755)
