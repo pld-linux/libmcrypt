@@ -48,6 +48,7 @@ Group(pt_BR):	Desenvolvimento/Bibliotecas
 Group(ru):	Разработка/Библиотеки
 Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
+Requires:	libltdl-devel
 
 %description devel
 Header files and development documentation for libmcrypt.
