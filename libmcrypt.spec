@@ -64,7 +64,7 @@ rm -rf $RPM_BUILD_ROOT
 
 make DESTDIR="$RPM_BUILD_ROOT" install
 
-strip -strip-unneeded $RPM_BUILD_ROOT%{_libdir}/*.so
+strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/*.so
 
 gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man3/* \
 	ChangeLog doc/{README.key,README.lib,README.mcrypt}
