@@ -3,8 +3,8 @@
 #		  (warning: ltdl has memory leaks, so it's insecure in
 #		   persistent environment, e.g. apache+php)
 #
-Summary:	encryption/decryption library
-Summary(pl):	biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi
+Summary:	Encryption/decryption library
+Summary(pl):	Biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi
 Name:		libmcrypt
 Version:	2.5.7
 Release:	1
