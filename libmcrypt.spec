@@ -35,7 +35,7 @@ which allows access to the above algorithms and modes is included.
 Zamiennik dla starej unixowej funkcji crypt(). Mcrypt u¿ywa
 nastêpuj±cych algorytmów: BLOWFISH, DES, TripleDES, 3-WAY, SAFER-SK64,
 SAFER-SK128, CAST-128, RC2 TEA (rozszerzona), TWOFISH, RC6, IDEA i
-GOST. Unixowy algorytm crypt tak¿e jest obs³ugiwany by zachowaæ
+GOST. Uniksowy algorytm crypt tak¿e jest obs³ugiwany by zachowaæ
 kompatybilno¶æ z crypt(1).
 
 %package devel
