@@ -39,7 +39,7 @@ Requires:	libltdl-devel
 %description devel
 Header files and development documentation for libmcrypt.
 
-%description -l pl devel
+%description devel -l pl
 Pliki nag³ówkowe i dokumentacja do libmcrypt.
 
 %package static
@@ -51,7 +51,7 @@ Requires:	%{name}-devel = %{version}
 %description static
 Encryption/decryption static library.
 
-%description -l pl static
+%description static -l pl
 Statyczna biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi.
 
 %prep
