@@ -60,15 +60,16 @@ Statyczna biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi.
 %build
 rm -f missing
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
-(cd libltdl
+cd libltdl
 rm -f missing
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
-automake -a -c)
+%{__automake}
+cd ..
 %configure \
 	--enable-static \
 	--disable-libltdl
