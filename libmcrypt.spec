@@ -12,6 +12,7 @@ License:	LGPL
 Vendor:		Nikos Mavroyanopoulos <nmav@hellug.gr>
 Group:		Libraries
 Source0:	ftp://mcrypt.hellug.gr/pub/mcrypt/libmcrypt/%{name}-%{version}.tar.gz
+# Source0-md5: b1be163143f8e8ed0474beeb642b3bad
 BuildRequires:	autoconf
 BuildRequires:	automake
 %{?_with_dynamic:BuildRequires:	libltdl-devel}
