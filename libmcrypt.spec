@@ -5,10 +5,9 @@ Version:	2.2.1
 Release:	1
 Vendor:		Nikos Mavroyanopoulos <nmav@hellug.gr>
 Copyright:	LGPL
-Group:		Development/Libraries
-Group(pl):	Programowanie/Biblioteki
+Group:		Libraries
+Group(pl):	Biblioteki
 Source:		ftp://argeas.cs-net.gr/pub/unix/mcrypt/%{name}-%{version}.tar.gz
-Prereq:		/sbin/ldconfig
 BuildRoot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -27,18 +26,31 @@ algorytmów: BLOWFISH, DES, TripleDES, 3-WAY, SAFER-SK64, SAFER-SK128, CAST-128,
 RC2 TEA (rozszerzona), TWOFISH, RC6, IDEA i GOST. Unixowy algorytm crypt tak¿e
 jest obs³ugiwany by zachowaæ kompatybilno¶æ z crypt(1).
 
+%package devel
+Summary:	Header files and development documentation for libmcrypt
+Summary(pl):	Pliki nag³ówkowe i dokumentacja do libmcrypt
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description devel
+Header files and development documentation for libmcrypt.
+
+%description -l pl devel
+Pliki nag³ówkowe i dokumentacja do libmcrypt.
+
 %package static
-Summary:        encryption/decryption static library
-Summary(pl):    statyczna biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi
-Group:          Development/Libraries
-Group(pl):      Programowanie/Biblioteki
-Requires:       %{name} = %{version}
+Summary:	Encryption/decryption static library
+Summary(pl):	Statyczna biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name}-devel = %{version}
 
 %description static
-encryption/decryption static library
+Encryption/decryption static library.
 
-%description static -l pl
-statyczna biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi
+%description -l pl static
+Statyczna biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi.
 
 %prep
 %setup -q
@@ -52,9 +64,10 @@ rm -rf $RPM_BUILD_ROOT
 
 make DESTDIR="$RPM_BUILD_ROOT" install
 
-strip		$RPM_BUILD_ROOT%{_libdir}/*.so
-gzip -9nf	$RPM_BUILD_ROOT%{_mandir}/man3/* \
-		ChangeLog doc/{README.key,README.lib,README.mcrypt}
+strip -strip-unneeded $RPM_BUILD_ROOT%{_libdir}/*.so
+
+gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man3/* \
+	ChangeLog doc/{README.key,README.lib,README.mcrypt}
 
 %post	-p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -64,8 +77,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
+
+%files devel
+%defattr(644,root,root,755)
 %doc {ChangeLog,doc/{README.key,README.lib,README.mcrypt}}.gz
-%attr(755,root,root) %{_libdir}/lib*.s*
+%attr(755,root,root) %{_libdir}/lib*.so
 %{_mandir}/man3/*
 %{_includedir}/*.h
 
