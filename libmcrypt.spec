@@ -32,7 +32,7 @@ CBC, ECB, OFB and CFB modes of encryption are supported. A library
 which allows access to the above algorithms and modes is included.
 
 %description -l pl
-Zamiennik dla starej unixowej funkcji crypt(). Mcrypt u¿ywa
+Zamiennik dla starej uniksowej funkcji crypt(). Mcrypt u¿ywa
 nastêpuj±cych algorytmów: BLOWFISH, DES, TripleDES, 3-WAY, SAFER-SK64,
 SAFER-SK128, CAST-128, RC2 TEA (rozszerzona), TWOFISH, RC6, IDEA i
 GOST. Uniksowy algorytm crypt tak¿e jest obs³ugiwany by zachowaæ
