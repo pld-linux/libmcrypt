@@ -2,7 +2,7 @@ Summary:	encryption/decryption library
 Summary(pl):	biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi
 Name:		libmcrypt
 Version:	2.4.16
-Release:	1
+Release:	2
 License:	LGPL
 Vendor:		Nikos Mavroyanopoulos <nmav@hellug.gr>
 Group:		Libraries
@@ -101,13 +101,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_libdir}/libmcrypt
 %attr(755,root,root) %{_libdir}/libmcrypt/*.so
+%attr(755,root,root) %{_libdir}/libmcrypt/*.la
 
 %files devel
 %defattr(644,root,root,755)
 %doc *.gz doc/*.gz
 %attr(755,root,root) %{_bindir}/libmcrypt-config
 %attr(755,root,root) %{_libdir}/lib*.so
-%attr(755,root,root) %{_libdir}/libmcrypt/*.la
 %{_mandir}/man3/*
 %{_includedir}/*.h
 %{_aclocaldir}/*
