@@ -1,7 +1,7 @@
 Summary:	encryption/decryption library
 Summary(pl):	biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi
 Name:		libmcrypt
-Version:	2.3.0
+Version:	2.4.0
 Release:	1
 Vendor:		Nikos Mavroyanopoulos <nmav@hellug.gr>
 Copyright:	LGPL
