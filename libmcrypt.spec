@@ -1,7 +1,12 @@
+#
+# _with_modules - build algos and modes as loadable modules
+#		  (warning: ltdl has memory leaks, so it's insecure in
+#		   persistent environment, e.g. apache+php)
+#
 Summary:	encryption/decryption library
 Summary(pl):	biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi
 Name:		libmcrypt
-Version:	2.4.22
+Version:	2.5.5
 Release:	1
 License:	LGPL
 Vendor:		Nikos Mavroyanopoulos <nmav@hellug.gr>
@@ -9,6 +14,7 @@ Group:		Libraries
 Source0:	ftp://mcrypt.hellug.gr/pub/mcrypt/libmcrypt/%{name}-%{version}.tar.gz
 BuildRequires:	autoconf
 BuildRequires:	automake
+%{?_with_dynamic:BuildRequires:	libltdl-devel}
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -65,14 +71,16 @@ rm -f missing
 %{__automake}
 cd libltdl
 rm -f missing
-%{__libtoolize}
 %{__aclocal}
 %{__autoconf}
-%{__automake}
+# don't use -f here
+automake -a -c --foreign
 cd ..
 %configure \
 	--enable-static \
-	--disable-libltdl
+	--disable-libltdl \
+	%{?_with_modules:--enable-dynamic-loading}
+
 %{__make}
 
 %install
@@ -80,29 +88,31 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} DESTDIR="$RPM_BUILD_ROOT" install
 
-%post	-p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post	-p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
+%if %{?_with_modules:1}%{!?_with_modules:0}
 %dir %{_libdir}/libmcrypt
 %attr(755,root,root) %{_libdir}/libmcrypt/*.so
 %{_libdir}/libmcrypt/*.la
+%endif
 
 %files devel
 %defattr(644,root,root,755)
 %doc ChangeLog doc/README.*
 %attr(755,root,root) %{_bindir}/libmcrypt-config
 %attr(755,root,root) %{_libdir}/lib*.so
-%{_mandir}/man3/*
+%{_libdir}/lib*.la
 %{_includedir}/*.h
 %{_aclocaldir}/*
+%{_mandir}/man3/*
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
-%{_libdir}/libmcrypt/*.a
