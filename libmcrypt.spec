@@ -80,8 +80,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} DESTDIR="$RPM_BUILD_ROOT" install
 
-gzip -9nf ChangeLog doc/README.*
-
 %post	-p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
@@ -97,7 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc *.gz doc/*.gz
+%doc ChangeLog doc/README.*
 %attr(755,root,root) %{_bindir}/libmcrypt-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_mandir}/man3/*
