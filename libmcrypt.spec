@@ -83,13 +83,14 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
+%dir %{_libdir}/libmcrypt
 %attr(755,root,root) %{_libdir}/libmcrypt/*.so
-%attr(755,root,root) %{_libdir}/libmcrypt/*.la
 
 %files devel
 %defattr(644,root,root,755)
 %doc *.gz doc/*.gz
 %attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/libmcrypt/*.la
 %{_mandir}/man3/*
 %{_includedir}/*.h
 
