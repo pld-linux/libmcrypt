@@ -1,21 +1,23 @@
 #
-# _with_modules - build algos and modes as loadable modules
-#		  (warning: ltdl has memory leaks, so it's insecure in
-#		   persistent environment, e.g. apache+php)
+%bcond_with	modules	# build algos and modes as loadable modules
+#			  (warning: ltdl has memory leaks, so it's insecure
+#			   in persistent environment, e.g. apache+php)
 #
 Summary:	Encryption/decryption library
 Summary(pl):	Biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi
 Name:		libmcrypt
 Version:	2.5.7
-Release:	1
+Release:	2
 License:	LGPL
 Vendor:		Nikos Mavroyanopoulos <nmav@hellug.gr>
 Group:		Libraries
-Source0:	ftp://mcrypt.hellug.gr/pub/mcrypt/libmcrypt/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/mcrypt/%{name}-%{version}.tar.gz
 # Source0-md5: b1be163143f8e8ed0474beeb642b3bad
-BuildRequires:	autoconf
+Patch0:		%{name}-am18.patch
+URL:		http://mcrypt.sourceforge.net/
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-%{?_with_dynamic:BuildRequires:	libltdl-devel}
+%{?with_modules:BuildRequires:	libltdl-devel}
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -41,7 +43,7 @@ Summary:	Header files and development documentation for libmcrypt
 Summary(pl):	Pliki nag³ówkowe i dokumentacja do libmcrypt
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
-Requires:	libltdl-devel
+%{?with_modules:Requires:	libltdl-devel}
 
 %description devel
 Header files and development documentation for libmcrypt.
@@ -63,15 +65,17 @@ Statyczna biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi.
 
 %prep
 %setup -q
+%patch0 -p1
+
+# only invalid libtool.m4 inclusion
+rm -f acinclude.m4
 
 %build
-rm -f missing
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
 cd libltdl
-rm -f missing
 %{__aclocal}
 %{__autoconf}
 # don't use -f here
@@ -80,14 +84,15 @@ cd ..
 %configure \
 	--enable-static \
 	--disable-libltdl \
-	%{?_with_modules:--enable-dynamic-loading}
+	%{?with_modules:--enable-dynamic-loading}
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} DESTDIR="$RPM_BUILD_ROOT" install
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -97,8 +102,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc AUTHORS KNOWN-BUGS NEWS README THANKS TODO
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%if %{?_with_modules:1}%{!?_with_modules:0}
+%if %{with modules}
 %dir %{_libdir}/libmcrypt
 %attr(755,root,root) %{_libdir}/libmcrypt/*.so
 %{_libdir}/libmcrypt/*.la
