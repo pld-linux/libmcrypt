@@ -2,10 +2,11 @@ Summary:	encryption/decryption library
 Summary(pl):	biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi
 Name:		libmcrypt
 Version:	2.4.4
-Release:	2
+Release:	3
 Vendor:		Nikos Mavroyanopoulos <nmav@hellug.gr>
 License:	LGPL
 Group:		Libraries
+Group(de):	Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://argeas.cs-net.gr/pub/unix/mcrypt/%{name}-%{version}.tar.gz
@@ -32,6 +33,7 @@ kompatybilno¶æ z crypt(1).
 Summary:	Header files and development documentation for libmcrypt
 Summary(pl):	Pliki nag³ówkowe i dokumentacja do libmcrypt
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -46,6 +48,7 @@ Pliki nag³ówkowe i dokumentacja do libmcrypt.
 Summary:	Encryption/decryption static library
 Summary(pl):	Statyczna biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
@@ -68,11 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} DESTDIR="$RPM_BUILD_ROOT" install
 
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/*.so.*.* \
-	$RPM_BUILD_ROOT%{_libdir}/libmcrypt/*.so
-
-gzip -9nf $RPM_BUILD_ROOT%{_mandir}/man3/* \
-	ChangeLog doc/README.*
+gzip -9nf ChangeLog doc/README.*
 
 %post	-p /sbin/ldconfig
 %postun -p /sbin/ldconfig
