@@ -12,21 +12,21 @@ Source0:	ftp://argeas.cs-net.gr/pub/unix/mcrypt/%{name}-%{version}.tar.gz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-A replacement for the old unix crypt(1) command. Mcrypt uses the following
-encryption (block) algorithms: BLOWFISH, DES, TripleDES, 3-WAY, SAFER-SK64,
-SAFER-SK128, CAST-128, RC2 TEA (extended), TWOFISH, RC6, IDEA and GOST. The
-unix crypt algorithm is also included, to allow compability with the
-crypt(1) command.
+A replacement for the old unix crypt(1) command. Mcrypt uses the
+following encryption (block) algorithms: BLOWFISH, DES, TripleDES,
+3-WAY, SAFER-SK64, SAFER-SK128, CAST-128, RC2 TEA (extended), TWOFISH,
+RC6, IDEA and GOST. The unix crypt algorithm is also included, to
+allow compability with the crypt(1) command.
 
-CBC, ECB, OFB and CFB modes of encryption are supported. A library which
-allows access to the above algorithms and modes is included.
+CBC, ECB, OFB and CFB modes of encryption are supported. A library
+which allows access to the above algorithms and modes is included.
 
 %description -l pl
-Zamiennik dla starej unixowej funkcji crypt(). Mcrypt u¿ywa nastêpuj±cych
-algorytmów: BLOWFISH, DES, TripleDES, 3-WAY, SAFER-SK64, SAFER-SK128,
-CAST-128, RC2 TEA (rozszerzona), TWOFISH, RC6, IDEA i GOST. Unixowy
-algorytm crypt tak¿e jest obs³ugiwany by zachowaæ kompatybilno¶æ z
-crypt(1).
+Zamiennik dla starej unixowej funkcji crypt(). Mcrypt u¿ywa
+nastêpuj±cych algorytmów: BLOWFISH, DES, TripleDES, 3-WAY, SAFER-SK64,
+SAFER-SK128, CAST-128, RC2 TEA (rozszerzona), TWOFISH, RC6, IDEA i
+GOST. Unixowy algorytm crypt tak¿e jest obs³ugiwany by zachowaæ
+kompatybilno¶æ z crypt(1).
 
 %package devel
 Summary:	Header files and development documentation for libmcrypt
