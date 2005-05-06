@@ -42,7 +42,7 @@ kompatybilno¶æ z crypt(1).
 Summary:	Header files and development documentation for libmcrypt
 Summary(pl):	Pliki nag³ówkowe i dokumentacja do libmcrypt
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 %{?with_modules:Requires:	libltdl-devel}
 
 %description devel
@@ -55,7 +55,7 @@ Pliki nag³ówkowe i dokumentacja do libmcrypt.
 Summary:	Encryption/decryption static library
 Summary(pl):	Statyczna biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Encryption/decryption static library.
