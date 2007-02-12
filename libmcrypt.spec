@@ -4,7 +4,7 @@
 #			   in persistent environment, e.g. apache+php)
 #
 Summary:	Encryption/decryption library
-Summary(pl):	Biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi
+Summary(pl.UTF-8):   Biblioteka z funkcjami szyfrujÄ…cymi oraz deszyfrujÄ…cymi
 Name:		libmcrypt
 Version:	2.5.7
 Release:	2
@@ -31,16 +31,16 @@ allow compability with the crypt(1) command.
 CBC, ECB, OFB and CFB modes of encryption are supported. A library
 which allows access to the above algorithms and modes is included.
 
-%description -l pl
-Zamiennik dla starej uniksowej funkcji crypt(). Mcrypt u¿ywa
-nastêpuj±cych algorytmów: BLOWFISH, DES, TripleDES, 3-WAY, SAFER-SK64,
+%description -l pl.UTF-8
+Zamiennik dla starej uniksowej funkcji crypt(). Mcrypt uÅ¼ywa
+nastÄ™pujÄ…cych algorytmÃ³w: BLOWFISH, DES, TripleDES, 3-WAY, SAFER-SK64,
 SAFER-SK128, CAST-128, RC2 TEA (rozszerzona), TWOFISH, RC6, IDEA i
-GOST. Uniksowy algorytm crypt tak¿e jest obs³ugiwany by zachowaæ
-kompatybilno¶æ z crypt(1).
+GOST. Uniksowy algorytm crypt takÅ¼e jest obsÅ‚ugiwany by zachowaÄ‡
+kompatybilnoÅ›Ä‡ z crypt(1).
 
 %package devel
 Summary:	Header files and development documentation for libmcrypt
-Summary(pl):	Pliki nag³ówkowe i dokumentacja do libmcrypt
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe i dokumentacja do libmcrypt
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 %{?with_modules:Requires:	libltdl-devel}
@@ -48,20 +48,20 @@ Requires:	%{name} = %{version}-%{release}
 %description devel
 Header files and development documentation for libmcrypt.
 
-%description devel -l pl
-Pliki nag³ówkowe i dokumentacja do libmcrypt.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe i dokumentacja do libmcrypt.
 
 %package static
 Summary:	Encryption/decryption static library
-Summary(pl):	Statyczna biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi
+Summary(pl.UTF-8):   Statyczna biblioteka z funkcjami szyfrujÄ…cymi oraz deszyfrujÄ…cymi
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Encryption/decryption static library.
 
-%description static -l pl
-Statyczna biblioteka z funkcjami szyfruj±cymi oraz deszyfruj±cymi.
+%description static -l pl.UTF-8
+Statyczna biblioteka z funkcjami szyfrujÄ…cymi oraz deszyfrujÄ…cymi.
 
 %prep
 %setup -q
