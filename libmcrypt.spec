@@ -4,7 +4,7 @@
 #			   in persistent environment, e.g. apache+php)
 #
 Summary:	Encryption/decryption library
-Summary(pl.UTF-8):   Biblioteka z funkcjami szyfrującymi oraz deszyfrującymi
+Summary(pl.UTF-8):	Biblioteka z funkcjami szyfrującymi oraz deszyfrującymi
 Name:		libmcrypt
 Version:	2.5.7
 Release:	2
@@ -40,7 +40,7 @@ kompatybilność z crypt(1).
 
 %package devel
 Summary:	Header files and development documentation for libmcrypt
-Summary(pl.UTF-8):   Pliki nagłówkowe i dokumentacja do libmcrypt
+Summary(pl.UTF-8):	Pliki nagłówkowe i dokumentacja do libmcrypt
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 %{?with_modules:Requires:	libltdl-devel}
@@ -53,7 +53,7 @@ Pliki nagłówkowe i dokumentacja do libmcrypt.
 
 %package static
 Summary:	Encryption/decryption static library
-Summary(pl.UTF-8):   Statyczna biblioteka z funkcjami szyfrującymi oraz deszyfrującymi
+Summary(pl.UTF-8):	Statyczna biblioteka z funkcjami szyfrującymi oraz deszyfrującymi
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
