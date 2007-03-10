@@ -6,14 +6,12 @@
 Summary:	Encryption/decryption library
 Summary(pl.UTF-8):	Biblioteka z funkcjami szyfrującymi oraz deszyfrującymi
 Name:		libmcrypt
-Version:	2.5.7
-Release:	3
+Version:	2.5.8
+Release:	1
 License:	LGPL
-Vendor:		Nikos Mavroyanopoulos <nmav@hellug.gr>
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/mcrypt/%{name}-%{version}.tar.gz
-# Source0-md5:	b1be163143f8e8ed0474beeb642b3bad
-Patch0:		%{name}-am18.patch
+Source0:	http://dl.sourceforge.net/mcrypt/%{name}-%{version}.tar.bz2
+# Source0-md5:	c4f491dd411a09e9de3b8702ea6f73eb
 URL:		http://mcrypt.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -65,7 +63,6 @@ Statyczna biblioteka z funkcjami szyfrującymi oraz deszyfrującymi.
 
 %prep
 %setup -q
-%patch0 -p1
 
 # only invalid libtool.m4 inclusion
 rm -f acinclude.m4
@@ -103,7 +100,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS KNOWN-BUGS NEWS README THANKS TODO
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libmcrypt.so.*.*.*
 %if %{with modules}
 %dir %{_libdir}/libmcrypt
 %attr(755,root,root) %{_libdir}/libmcrypt/*.so
@@ -114,12 +111,15 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc ChangeLog doc/README.*
 %attr(755,root,root) %{_bindir}/libmcrypt-config
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_includedir}/*.h
-%{_aclocaldir}/*
-%{_mandir}/man3/*
+%attr(755,root,root) %{_libdir}/libmcrypt.so
+%{_libdir}/libmcrypt.la
+%{_includedir}/mcrypt.h
+# dir shared with mhash
+%dir %{_includedir}/mutils
+%{_includedir}/mutils/mcrypt.h
+%{_aclocaldir}/libmcrypt.m4
+%{_mandir}/man3/mcrypt.3*
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libmcrypt.a
